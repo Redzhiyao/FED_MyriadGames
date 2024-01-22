@@ -1,21 +1,26 @@
-* {
+.index-container {
   background-color: grey;
 }
 
 .start {
-  color: white;
   margin: 0;
   padding: 10px;
-  font-size: 96px;
   position: absolute;
+  background-color: grey;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
+.start a{
+  color: white;
+  text-decoration: none;
+  font-size: 96px;
+}
 
 .start:hover {
   background-color: rgb(118, 118, 118);
+  text-decoration: none;
   box-shadow: 10px 10px 10px rgb(94, 94, 94);
 }
 
