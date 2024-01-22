@@ -1,3 +1,24 @@
+* {
+  background-color: grey;
+}
+
+.start {
+  color: white;
+  margin: 0;
+  padding: 10px;
+  font-size: 96px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.start:hover {
+  background-color: rgb(118, 118, 118);
+  box-shadow: 10px 10px 10px rgb(94, 94, 94);
+}
+
 .box {
   display: flex;
   align-items: center;
