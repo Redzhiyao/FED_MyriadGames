@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/triviaQuiz.css" />
+    <title>Trivia Quiz</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="questionNumber" id="questionNumber">Question Number</div>
+      <div class="questionBox">
+        <div class="timer-container">
+          <div class="timer-bar" id="timerBar"></div>
+        </div>
+        <div class="box-displayQuestion" id="displayQuestion">
+          Display Question
+        </div>
+      </div>
+      <div class="options">
+        <div
+          class="box-optionBox"
+          id="optionAnswer1"
+          onclick="nextQuestion('optionAnswer1')"
+        >
+          Option 1
+        </div>
+        <div
+          class="box-optionBox"
+          id="optionAnswer2"
+          onclick="nextQuestion('optionAnswer2')"
+        >
+          Option 2
+        </div>
+        <div
+          class="box-optionBox"
+          id="optionAnswer3"
+          onclick="nextQuestion('optionAnswer3')"
+        >
+          Option 3
+        </div>
+        <div
+          class="box-optionBox"
+          id="optionAnswer4"
+          onclick="nextQuestion('optionAnswer4')"
+        >
+          Option 4
+        </div>
+      </div>
+    </div>
+    <script src="/script/triviaQuiz.js"></script>
+  </body>
+</html>

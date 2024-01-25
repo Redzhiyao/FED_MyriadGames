@@ -1,68 +1,90 @@
-const apiKey = "ApiKeyAuth";
-const apiUrl = "https://the-trivia-api.com/v2/questions";
-const answersContainer = document.getElementById("answers-container");
+// Global variable to track the current question index
+let currentQuestionIndex = 0;
+let timer; // Store the timer reference
+let playedQuestions = 0;
 
-// Fetch trivia question from the API
-function fetchTriviaQuestion() {
-  fetch(apiUrl, {
-    headers: {
-      "x-api-key": apiKey,
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      displayQuestion(data);
-    })
-    .catch((error) => console.error("Error fetching trivia question:", error));
-}
+// Function to update question number and fetch data for the next question
+async function nextQuestion(selectedOptionId) {
+  currentQuestionIndex++;
 
-// Display the trivia question and answers
-function displayQuestion(questionData) {
-  const questionElement = document.getElementById("question");
+  document.getElementById(
+    "questionNumber"
+  ).textContent = `Question ${currentQuestionIndex}`;
 
-  // Clear previous answers
-  answersContainer.innerHTML = "";
+  // Check if the player has played 10 questions
+  if (playedQuestions >= 10) {
+    alert("You have completed 10 questions! Game Over!");
+    return;
+  }
 
-  // Display question text
-  questionElement.textContent = questionData.question.text;
+  clearTimeout(timer);
 
-  // Display answer choices
-  const allAnswers = [
-    questionData.correctAnswer,
-    ...questionData.incorrectAnswers,
-  ];
-  shuffleArray(allAnswers);
+  startTimer();
 
-  allAnswers.forEach((answer) => {
-    const answerBox = document.createElement("div");
-    answerBox.classList.add("answer-box");
-    answerBox.textContent = answer;
-    answerBox.addEventListener("click", () =>
-      checkAnswer(answer, questionData.correctAnswer)
-    );
-    answersContainer.appendChild(answerBox);
-  });
-}
+  try {
+    const response = await fetch("https://the-trivia-api.com/v2/questions", {
+      headers: {
+        "x-apikey": "ApiKeyAuth",
+      },
+    });
+    const data = await response.json();
 
-// Shuffle array in place
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    // Get HTML elements
+    let displayQuestionElement = document.getElementById("displayQuestion");
+    let optionAnswer1Element = document.getElementById("optionAnswer1");
+    let optionAnswer2Element = document.getElementById("optionAnswer2");
+    let optionAnswer3Element = document.getElementById("optionAnswer3");
+    let optionAnswer4Element = document.getElementById("optionAnswer4");
+
+    // Update HTML elements with data for the next question
+    displayQuestionElement.textContent =
+      data[currentQuestionIndex].question.text;
+    optionAnswer1Element.textContent = data[currentQuestionIndex].correctAnswer;
+    optionAnswer2Element.textContent =
+      data[currentQuestionIndex].incorrectAnswers[0];
+    optionAnswer3Element.textContent =
+      data[currentQuestionIndex].incorrectAnswers[1];
+    optionAnswer4Element.textContent =
+      data[currentQuestionIndex].incorrectAnswers[2];
+  } catch (error) {
+    console.error("Error fetching data:", error);
   }
 }
 
-// Check if the selected answer is correct
-function checkAnswer(selectedAnswer, correctAnswer) {
-  if (selectedAnswer === correctAnswer) {
-    alert("Correct!");
-  } else {
-    alert(`Incorrect. The correct answer is: ${correctAnswer}`);
+// Function to start the timer
+function startTimer() {
+  const timerBar = document.getElementById("timerBar");
+
+  // Reset the timer bar's width and transition properties
+  function resetTimerBar() {
+    timerBar.style.width = "0%";
+    timerBar.style.transition = "none";
   }
 
-  // Fetch the next question
-  fetchTriviaQuestion();
+  // Set the width of the timer bar to 0% initially
+  resetTimerBar();
+
+  // Add a class to initiate the animation
+  timerBar.classList.add("animate-timer");
+
+  // Call nextQuestion after 30 seconds
+  setTimeout(() => {
+    nextQuestion();
+    resetTimerBar(); // Reset the timer bar visually
+    timerBar.classList.remove("animate-timer"); // Remove animation class
+  }, 30000);
 }
 
-// Start the quiz by fetching the first question
-fetchTriviaQuestion();
+document.getElementById("optionAnswer1").addEventListener("click", resetTimer);
+document.getElementById("optionAnswer2").addEventListener("click", resetTimer);
+document.getElementById("optionAnswer3").addEventListener("click", resetTimer);
+document.getElementById("optionAnswer4").addEventListener("click", resetTimer);
+
+// Function to reset the timer
+function resetTimer() {
+  clearTimeout(timer); // Clear existing timers
+  startTimer(); // Start the timer again
+}
+
+// Call the nextQuestion function to load the first question
+nextQuestion();

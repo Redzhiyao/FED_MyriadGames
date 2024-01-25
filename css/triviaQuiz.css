@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #a615ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  font-family: "Poppins-Medium", Helvetica;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.questionNumber {
+  font-family: "Poppins-Medium", Helvetica;
+  font-size: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.timer-container {
+  width: 100%;
+  height: 20px;
+  background-color: transparent;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.timer-bar {
+  height: 100%;
+  width: 100%;
+  background-color: orange;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 5s linear;
+  border-radius: 10px;
+}
+
+.box-displayQuestion {
+  font-family: "Poppins-Bold", Helvetica;
+  font-size: 28px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 15px;
+  text-align: center;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-optionBox {
+  background-color: white;
+  border-radius: 35px;
+  padding: 30px;
+  margin: 15px;
+  text-align: center;
+  font-size: 20px;
+  transition: transform 0.2s;
+}
+
+.box-optionBox:hover {
+  transform: scale(1.1);
+}
+
+.questionBox {
+  margin-bottom: 30px;
+}
+
+.animate-timer {
+  animation: timerAnimation 30 linear;
+}
+
+@keyframes timerAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
