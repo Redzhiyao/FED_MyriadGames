@@ -4,47 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/triviaQuiz.css" />
+    <link rel="stylesheet" href="/css/playTriviaQuiz.css" />
     <title>Trivia Quiz</title>
   </head>
   <body>
     <div class="container">
-      <div class="questionNumber" id="questionNumber">Question Number</div>
-      <div class="questionBox">
-        <div class="timer-container">
-          <div class="timer-bar" id="timerBar"></div>
+      <div id="game" class="justify-center flex-column">
+        <div id="hud">
+          <div class="hud-item">
+            <p id="progressText" class="hud-prefix">Question</p>
+            <div id="progressBar">
+              <div id="progressBarFull"></div>
+            </div>
+          </div>
+          <div class="hud-item">
+            <p class="hud-prefix">Score</p>
+            <h1 class="hud-main-text" id="score">0</h1>
+          </div>
         </div>
-        <div class="box-displayQuestion" id="displayQuestion">
-          Display Question
+        <h1 id="question">What is the answer to this question?</h1>
+        <div class="choice-container">
+          <p class="choice-prefix">A</p>
+          <p class="choice-text" data-number="1">Choice</p>
         </div>
-      </div>
-      <div class="options">
-        <div
-          class="box-optionBox"
-          id="optionAnswer1"
-          onclick="nextQuestion('optionAnswer1')"
-        >
-          Option 1
+        <div class="choice-container">
+          <p class="choice-prefix">B</p>
+          <p class="choice-text" data-number="2">Choice 2</p>
         </div>
-        <div
-          class="box-optionBox"
-          id="optionAnswer2"
-          onclick="nextQuestion('optionAnswer2')"
-        >
-          Option 2
+        <div class="choice-container">
+          <p class="choice-prefix">C</p>
+          <p class="choice-text" data-number="3">Choice 3</p>
         </div>
-        <div
-          class="box-optionBox"
-          id="optionAnswer3"
-          onclick="nextQuestion('optionAnswer3')"
-        >
-          Option 3
-        </div>
-        <div
-          class="box-optionBox"
-          id="optionAnswer4"
-          onclick="nextQuestion('optionAnswer4')"
-        >
-          Option 4
+        <div class="choice-container">
+          <p class="choice-prefix">D</p>
+          <p class="choice-text" data-number="4">Choice 4</p>
         </div>
       </div>
     </div>
