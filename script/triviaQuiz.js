@@ -55,7 +55,7 @@ getNewQuestion = () => {
     localStorage.setItem("mostRecentScore", score);
 
     console.log("No more questions or max questions reached");
-    return window.location.assign("/end.html");
+    return window.location.assign("/html/triviaEnd.html");
   }
 
   questionCounter++;
