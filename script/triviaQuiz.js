@@ -1,141 +1,169 @@
-const question = document.querySelector("#question");
-const choices = Array.from(document.querySelectorAll(".choice-text"));
-const progressText = document.querySelector("#progressText");
-const scoreText = document.querySelector("#score");
-const progressBarFull = document.querySelector("#progressBarFull");
+document.addEventListener("DOMContentLoaded", function () {
+  const APIKEY = "ApiKeyAuth";
 
-let currentQuestion = {};
-let acceptingAnswers = true;
-let score = 0;
-let questionCounter = 0;
-let availableQuestions = [];
+  const question = document.getElementById("question");
+  const choices = Array.from(
+    document.querySelectorAll(".choice-container .choice-text")
+  );
+  const progressText = document.getElementById("progressText");
+  const scoreText = document.getElementById("score");
+  const progressBarFull = document.getElementById("progressBarFull");
 
-let questions = [
-  {
-    question: "What is 2+2",
-    choice1: "2",
-    choice2: "4",
-    choice3: "21",
-    choice4: "17",
-    answer: 2,
-  },
-  {
-    question:
-      "What percent of American adults believe that chocolate milk comes from brown cows?",
-    choice1: "20%",
-    choice2: "18%",
-    choice3: "7%",
-    choice4: "33%",
-    answer: 3,
-  },
-  {
-    question: "The tallest building in the world is located in which city?",
-    choice1: "Dubai",
-    choice2: "New York",
-    choice3: "Shanghai",
-    choice4: "None of the above",
-    answer: 1,
-  },
-];
+  let currentQuestion = {};
+  let acceptingAnswers = true;
+  let score = 0;
+  let questionCounter = 0;
+  let availableQuestions = [];
+  let questions = [];
+  const SCORE_POINTS = 100;
+  const MAX_QUESTIONS = 10;
 
-const SCORE_POINTS = 100;
-const MAX_QUESTIONS = 4;
+  // Function to start the game
+  const startGame = async () => {
+    console.log("Starting game");
 
-startGame = () => {
-  console.log("Starting game");
-  questionCounter = 0;
-  score = 0;
-  availableQuestions = [...questions];
-  getNewQuestion();
-};
+    // Check if questions are already fetched
+    if (questions.length === 0) {
+      const data = await fetchTriviaData();
+      if (data && data.length > 0) {
+        questions = data;
+        questionCounter = 0;
+        score = 0;
+        availableQuestions = [];
+        getNewQuestion();
+      } else {
+        console.error("No questions retrieved from the API");
+      }
+    } else {
+      // Questions are already fetched, proceed to the game
+      questionCounter = 0;
+      score = 0;
+      availableQuestions = [];
+      getNewQuestion();
+    }
+  };
 
-getNewQuestion = () => {
-  console.log("Getting new question");
-  if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-    localStorage.setItem("mostRecentScore", score);
+  // Function to fetch trivia data from the API
+  const fetchTriviaData = async () => {
+    try {
+      let settings = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-apikey": APIKEY,
+          "Cache-Control": "no-cache",
+        },
+      };
 
-    console.log("No more questions or max questions reached");
-    return window.location.assign("/html/triviaEnd.html");
-  }
+      const response = await fetch(
+        "https://the-trivia-api.com/v2/questions/",
+        settings
+      );
 
-  questionCounter++;
-  console.log(`Question ${questionCounter} of ${MAX_QUESTIONS}`);
-  progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(
+          `Error response from API: ${response.status} - ${errorText}`
+        );
+        return null;
+      }
 
-  const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
-  currentQuestion = availableQuestions[questionsIndex];
-  console.log("Current question:", currentQuestion);
-  question.innerText = currentQuestion.question;
+      const data = await response.json();
 
-  choices.forEach((choice) => {
-    const number = choice.dataset["number"];
-    choice.innerText = currentQuestion["choice" + number];
-  });
+      // Return only the first 4 questions
+      return data.slice(0, 10);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+      return null;
+    }
+  };
 
-  availableQuestions.splice(questionsIndex, 1);
+  const getNewQuestion = () => {
+    console.log("Getting new question");
+    console.log("availableQuestions.length:", availableQuestions.length);
+    console.log("questionCounter:", questionCounter);
 
-  acceptingAnswers = true;
-};
+    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+      localStorage.setItem("mostRecentScore", score);
 
-choices.forEach((choice) => {
-  choice.addEventListener("click", (e) => {
-    if (!acceptingAnswers) return;
-
-    acceptingAnswers = false;
-    const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset["number"];
-
-    let classToApply =
-      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-
-    if (classToApply === "correct") {
-      incrementScore(SCORE_POINTS);
+      console.log("No more questions or max questions reached");
+      // return window.location.assign("/html/triviaEnd.html");
     }
 
-    selectedChoice.parentElement.classList.add(classToApply);
+    questionCounter++;
+    console.log(`Question ${questionCounter} of ${MAX_QUESTIONS}`);
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
-    setTimeout(() => {
-      selectedChoice.parentElement.classList.remove(classToApply);
-      getNewQuestion();
-    }, 1000);
+    // Select the next question from the API data sequentially
+    currentQuestion = questions[questionCounter - 1];
+    console.log("Current question:", currentQuestion);
+
+    // Access nested properties correctly
+    const questionText = currentQuestion.question?.text;
+
+    if (questionText) {
+      question.innerText = questionText; // Display the question text
+
+      // Update choice elements with answers
+      console.log("Choices:", choices); // Log the choices array
+
+      const correctAnswer = currentQuestion.correctAnswer;
+      const incorrectAnswers = currentQuestion.incorrectAnswers;
+
+      // Assuming choices[0] is for the correct answer
+      choices[0].innerText = "Loading answer...";
+      setTimeout(() => {
+        choices[0].innerText = correctAnswer;
+      }, 1000);
+
+      // Assuming choices[1], choices[2], choices[3] are for incorrect answers
+      for (let i = 1; i <= 3; i++) {
+        choices[i].innerText = "Loading answer...";
+        setTimeout(() => {
+          choices[i].innerText = incorrectAnswers[i - 1];
+        }, 1000);
+      }
+
+      acceptingAnswers = true;
+    } else {
+      console.error("No question text available in the API response");
+    }
+  };
+
+  // Event listener for user's choice
+  choices.forEach((choice) => {
+    choice.addEventListener("click", (e) => {
+      if (!acceptingAnswers) return;
+
+      acceptingAnswers = false;
+      const selectedChoice = e.target;
+      const selectedAnswer = selectedChoice.innerText;
+
+      let classToApply =
+        selectedAnswer === currentQuestion.correctAnswer
+          ? "correct"
+          : "incorrect";
+
+      if (classToApply === "correct") {
+        incrementScore(SCORE_POINTS);
+      }
+
+      selectedChoice.parentElement.classList.add(classToApply);
+
+      setTimeout(() => {
+        selectedChoice.parentElement.classList.remove(classToApply);
+        getNewQuestion();
+      }, 2000);
+    });
   });
+
+  // Function to increment the score
+  const incrementScore = (num) => {
+    score += num;
+    scoreText.innerText = score;
+    console.log("Score incremented:", score);
+  };
+
+  // Invoke the startGame function
+  startGame();
 });
-
-incrementScore = (num) => {
-  score += num;
-  scoreText.innerText = score;
-  console.log("Score incremented:", score);
-};
-
-startGame();
-
-/*try {
-  const response = await fetch("https://the-trivia-api.com/v2/questions", {
-    headers: {
-      "x-apikey": "ApiKeyAuth",
-    },
-  });
-  const data = await response.json();
-
-  // Get HTML elements
-  let displayQuestionElement = document.getElementById("displayQuestion");
-  let optionAnswer1Element = document.getElementById("optionAnswer1");
-  let optionAnswer2Element = document.getElementById("optionAnswer2");
-  let optionAnswer3Element = document.getElementById("optionAnswer3");
-  let optionAnswer4Element = document.getElementById("optionAnswer4");
-
-  // Update HTML elements with data for the next question
-  displayQuestionElement.textContent = data[currentQuestionIndex].question.text;
-  optionAnswer1Element.textContent = data[currentQuestionIndex].correctAnswer;
-  optionAnswer2Element.textContent =
-    data[currentQuestionIndex].incorrectAnswers[0];
-  optionAnswer3Element.textContent =
-    data[currentQuestionIndex].incorrectAnswers[1];
-  optionAnswer4Element.textContent =
-    data[currentQuestionIndex].incorrectAnswers[2];
-} catch (error) {
-  console.error("Error fetching data:", error);
-}
-
-// Call the nextQuestion function to load the first question
-nextQuestion();*/
