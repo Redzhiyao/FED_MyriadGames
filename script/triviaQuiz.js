@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const data = await response.json();
 
-      // Return only the first 4 questions
+      // Return only the first 10 questions
       return data.slice(0, 10);
     } catch (error) {
       console.error("Error fetching data:", error.message);
@@ -87,7 +87,11 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("mostRecentScore", score);
 
       console.log("No more questions or max questions reached");
-      // return window.location.assign("/html/triviaEnd.html");
+
+      // Redirect to triviaEnd.html after 10 questions
+      if (questionCounter >= MAX_QUESTIONS) {
+        return window.location.assign("/html/triviaEnd.html");
+      }
     }
 
     questionCounter++;
@@ -102,29 +106,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const questionText = currentQuestion.question?.text;
 
     if (questionText) {
-      question.innerText = questionText; // Display the question text
+      // Display the question text
+      question.innerText = questionText;
 
-      // Update choice elements with answers
-      console.log("Choices:", choices); // Log the choices array
+      // Disable user interaction during the loading period
+      acceptingAnswers = false;
+
+      // Update choice elements with answers simultaneously
+      for (let i = 0; i <= 3; i++) {
+        choices[i].innerText = "Loading answer...";
+      }
 
       const correctAnswer = currentQuestion.correctAnswer;
       const incorrectAnswers = currentQuestion.incorrectAnswers;
 
-      // Assuming choices[0] is for the correct answer
-      choices[0].innerText = "Loading answer...";
+      // Set correct answer after a delay
       setTimeout(() => {
         choices[0].innerText = correctAnswer;
       }, 1000);
 
-      // Assuming choices[1], choices[2], choices[3] are for incorrect answers
+      // Set incorrect answers after a delay
       for (let i = 1; i <= 3; i++) {
-        choices[i].innerText = "Loading answer...";
         setTimeout(() => {
           choices[i].innerText = incorrectAnswers[i - 1];
         }, 1000);
       }
 
-      acceptingAnswers = true;
+      // Enable user interaction after the answers are loaded
+      setTimeout(() => {
+        acceptingAnswers = true;
+      }, 2000);
     } else {
       console.error("No question text available in the API response");
     }
