@@ -78,6 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // Function to shuffle an array using Fisher-Yates algorithm
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
   const getNewQuestion = () => {
     console.log("Getting new question");
     console.log("availableQuestions.length:", availableQuestions.length);
@@ -113,22 +121,18 @@ document.addEventListener("DOMContentLoaded", function () {
       acceptingAnswers = false;
 
       // Update choice elements with answers simultaneously
+      const answerChoices = [
+        currentQuestion.correctAnswer,
+        ...currentQuestion.incorrectAnswers,
+      ];
+      shuffleArray(answerChoices);
+
       for (let i = 0; i <= 3; i++) {
         choices[i].innerText = "Loading answer...";
-      }
 
-      const correctAnswer = currentQuestion.correctAnswer;
-      const incorrectAnswers = currentQuestion.incorrectAnswers;
-
-      // Set correct answer after a delay
-      setTimeout(() => {
-        choices[0].innerText = correctAnswer;
-      }, 1000);
-
-      // Set incorrect answers after a delay
-      for (let i = 1; i <= 3; i++) {
+        // Set answers after a delay
         setTimeout(() => {
-          choices[i].innerText = incorrectAnswers[i - 1];
+          choices[i].innerText = answerChoices[i];
         }, 1000);
       }
 
