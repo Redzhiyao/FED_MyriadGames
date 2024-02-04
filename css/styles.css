@@ -1,27 +1,19 @@
 .index-container {
-  background-color: grey;
+  background-color: #cdfadb;
 }
 
-.start {
-  color: white;
-  margin: 0;
-  padding: 10px;
-  font-size: 96px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+#start {
+  background-color: #f6fdc3;
+  margin: auto;
+  inset: 0px;
 }
-.start a {
-  color: white;
+#start a {
+  color: rgb(255, 140, 140);
   text-decoration: none;
   font-size: 96px;
 }
-.start:hover {
-  background-color: rgb(118, 118, 118);
-  text-decoration: none;
-  box-shadow: 10px 10px 10px rgb(170, 160, 160);
+#start:hover {
+  box-shadow: 10px 10px 0px #ff96ad;
 }
 
 /* Reset some default styles */
@@ -36,19 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Make sure the body takes at least the full height of the viewport */
-}
-
-/* Style the header */
-.allGames-header {
-  background-color: #333; /* Add your desired background color */
-  color: #fff; /* Add your desired text color */
-  padding: 10px; /* Add some padding to the header */
-}
-
-.row-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #cdfadb;
 }
 
 .text-header-allGames,
@@ -58,6 +38,10 @@ body {
   color: #fff; /* Add your desired text color for header links */
   text-decoration: none;
   margin-right: 10px; /* Add some spacing between header links */
+}
+
+.navbar {
+  background-color: #f6fdc3;
 }
 
 /* Center the allGames-display */
@@ -70,7 +54,7 @@ body {
 
 /* Style the content inside allGames-display */
 .bigger-rectangle {
-  background-color: #eee; /* Add your desired background color for the allGames-display */
+  background-color: #eeeeee; /* Add your desired background color for the allGames-display */
   padding: 20px; /* Add padding to the content inside */
 }
 
