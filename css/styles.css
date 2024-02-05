@@ -1,7 +1,10 @@
 .index-container {
   background-color: #cdfadb;
 }
-
+.box img {
+  width: 500px;
+  height: 300px;
+}
 #start {
   background-color: #f6fdc3;
   margin: auto;
