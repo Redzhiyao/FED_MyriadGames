@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const APIKEY = "ApiKeyAuth";
 
-  setTimeout(Loadingpage, 3000);
+  setTimeout(Loadingpage, 2000);
   function Loadingpage() {
     // Hide the loading page
     document.getElementById("loading-page").style.display = "none";
@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Select the next question from the API data sequentially
     currentQuestion = questions[questionCounter - 1];
     console.log("Current question:", currentQuestion);
+    progressText.innerText = `Question ${questionCounter}`;
 
     // Access nested properties correctly
     const questionText = currentQuestion.question?.text;
@@ -144,18 +145,12 @@ document.addEventListener("DOMContentLoaded", function () {
       shuffleArray(answerChoices);
 
       for (let i = 0; i <= 3; i++) {
-        choices[i].innerText = "Loading answer...";
-
-        // Set answers after a delay
-        setTimeout(() => {
-          choices[i].innerText = answerChoices[i];
-        }, 1000);
+        // Set answers without delay
+        choices[i].innerText = answerChoices[i];
       }
 
       // Enable user interaction after the answers are loaded
-      setTimeout(() => {
-        acceptingAnswers = true;
-      }, 2000);
+      acceptingAnswers = true;
     } else {
       console.error("No question text available in the API response");
     }

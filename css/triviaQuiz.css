@@ -67,6 +67,10 @@ body {
   justify-content: space-between;
 }
 
+#progressText {
+  color: white;
+}
+
 .hud-prefix {
   text-align: center;
   font-size: 2rem;
