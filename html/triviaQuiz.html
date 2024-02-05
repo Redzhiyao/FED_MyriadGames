@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/triviaQuiz.css" />
     <link rel="stylesheet" href="/css/playTriviaQuiz.css" />
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
     <title>Trivia Quiz</title>
   </head>
   <body>
+    <div id="loading-page">
+      <dotlottie-player
+        src="https://lottie.host/9fcf4c2c-47b6-4962-a698-7ef79d69dd5a/oCu5dAa4Cl.json"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px"
+        loop
+        autoplay
+      ></dotlottie-player>
+    </div>
     <div class="container">
       <div id="game" class="justify-center flex-column">
         <div id="hud">

@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   const APIKEY = "ApiKeyAuth";
 
+  setTimeout(Loadingpage, 3000);
+  function Loadingpage() {
+    // Hide the loading page
+    document.getElementById("loading-page").style.display = "none";
+  }
+
   const question = document.getElementById("question");
   const choices = Array.from(
     document.querySelectorAll(".choice-container .choice-text")
