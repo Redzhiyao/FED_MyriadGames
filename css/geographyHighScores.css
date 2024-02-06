@@ -1,0 +1,28 @@
+body {
+    color: white;
+  }
+  
+  #highScoresList {
+    list-style: none;
+    margin-bottom: 4rem;
+  }
+  
+  .high-score {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #555; /
+  }
+  
