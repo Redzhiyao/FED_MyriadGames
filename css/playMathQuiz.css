@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #23c4f5;
+  background-color: #87aed5;
 }
 
 h1 {
@@ -68,7 +68,7 @@ h2 {
 
 .btn:hover {
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem 0 rgb(8, 144, 244, 0.6);
+  box-shadow: 0 0.4rem 1.4rem 0 #ff96ad;
   transition: transform 150ms;
   transform: scale(1.03);
 }

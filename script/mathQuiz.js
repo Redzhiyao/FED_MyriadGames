@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hide the loading page
     document.getElementById("loading-page").style.display = "none";
   }
+
   const question = document.getElementById("question");
   const choices = Array.from(
     document.querySelectorAll(".choice-container .choice-text")
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const fetchTriviaData = async () => {
     try {
       const response = await fetch(
-        "https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=10&category=19&difficulty=hard&type=multiple"
       );
 
       if (!response.ok) {
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign("/html/geographyEnd.html");
+        return window.location.assign("/html/mathEnd.html");
       }
     }
 
