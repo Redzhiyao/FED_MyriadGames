@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign("/html/triviaEnd.html");
+        return window.location.assign("/html/geographyEnd.html");
       }
     }
 
@@ -131,18 +131,12 @@ document.addEventListener("DOMContentLoaded", function () {
       shuffleArray(answerChoices);
 
       for (let i = 0; i <= 3; i++) {
-        choices[i].innerText = "Loading answer...";
-
-        // Set answers after a delay
-        setTimeout(() => {
-          choices[i].innerText = answerChoices[i];
-        }, 1000);
+        // Set answers without delay
+        choices[i].innerText = answerChoices[i];
       }
 
       // Enable user interaction after the answers are loaded
-      setTimeout(() => {
-        acceptingAnswers = true;
-      }, 2000);
+      acceptingAnswers = true;
     } else {
       console.error("No question text available in the API response");
     }
