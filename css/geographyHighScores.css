@@ -25,3 +25,7 @@ body {
 .back-button:hover {
   background-color: #555;
 }
+
+#end-text {
+  color: white;
+}
