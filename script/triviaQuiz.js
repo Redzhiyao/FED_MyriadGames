@@ -95,8 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const updateHighScore = (score) => {
     const currentHighScore = localStorage.getItem("highScore") || 0;
 
+    console.log("Current high score:", currentHighScore);
+    console.log("Current score:", score);
+
     if (score > currentHighScore) {
       localStorage.setItem("highScore", score);
+      console.log("New high score saved:", score);
     }
   };
 
