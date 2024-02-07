@@ -6,15 +6,6 @@
   font-family: "Poppins-Bold", Helvetica;
 }
 
-body {
-  background-color: #87aed5;
-  background: url(/img/mathPic.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 h1 {
   font-size: 5.4rem;
   color: rgb(0, 0, 0);

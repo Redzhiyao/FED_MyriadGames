@@ -1,5 +1,10 @@
 body {
-  color: white;
+  background-color: #318962;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: rgb(0, 0, 0);
 }
 
 #highScoresList {
@@ -7,7 +12,7 @@ body {
   margin-bottom: 4rem;
 }
 
-.high-score {
+#finalScore {
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
 }
@@ -15,10 +20,10 @@ body {
 .back-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #333; 
+  background-color: #333;
   color: white;
   text-decoration: none;
-  border-radius: 5px; 
+  border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 

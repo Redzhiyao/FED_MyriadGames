@@ -1,9 +1,10 @@
 body {
   background-color: #87aed5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  background: url(/img/mathPic.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #loading-page {
