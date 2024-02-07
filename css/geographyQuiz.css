@@ -4,6 +4,11 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: url(/img/earth_pic.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #loading-page {
@@ -24,6 +29,15 @@ body {
   z-index: 9999;
 }
 
+.end-form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 30rem;
+  color: white;
+}
+
 #question {
   font-size: 3.5rem; /* Adjust font size as needed */
 }
@@ -36,6 +50,7 @@ body {
   font-size: 3rem;
   border: 2px solid white;
   min-width: 80rem;
+  background-color: rgb(144, 200, 235);
 }
 
 .choice-container:hover {
@@ -47,7 +62,7 @@ body {
 
 .choice-prefix {
   padding: 2rem 2.5rem;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .choice-text {
@@ -98,6 +113,10 @@ body {
   height: 100%;
   background: rgb(11, 223, 36);
   width: 0%;
+}
+
+#progressText {
+  color: white;
 }
 
 @media screen and (max-width: 768px) {

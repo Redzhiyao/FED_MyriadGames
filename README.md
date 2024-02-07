@@ -5,22 +5,33 @@ Welcome to Assignment 2! Our project focuses on leveraging web platforms to crea
 
 # Design Process
 
-The key objectives of our team, Myriad Games, are centered around creating a website that features multiple games designed to educate young kids on fundamental subjects, including English, Math, and Trivia Questions. By combining entertainment with education, we aim to make learning enjoyable and effective for our target audience.
+The key objectives of our team, Myriad Games, are centered around creating a website that features multiple games designed to educate young kids on fundamental subjects, including Geography, Math, and Trivia Questions. By combining entertainment with education, we aim to make learning enjoyable and effective for our target audience.
 
 # Features
 
 - Diverse Games - Our website will offer a variety of games to cater to different learning styles and interests.
-- Educational - Content: The games are specifically crafted to cover essential subjects such as English, Math, and Trivia Questions.
+- Educational - Content: The games are specifically crafted to cover essential subjects such as Geography, Math, and Trivia Questions.
 - Gamification - Elements: We integrate gamification concepts to make the learning experience enjoyable and motivating for young users.
 - Quality Visuals - The application will boast visually appealing graphics and animations to enhance user engagement.
+- Quizzes - Allowing users to answer questions and learn more about the chosen topic.
 
 # Technology Used
 
-- API 1 - Sign Up/Sign In API (Link)
-- API 2 - Hangman API (Link)
-- API 3 - Math Questions API (Link)
-- API 4 - Trivia Questions API (Link)
+API name to be added
 
 # Testing
 
+1. Navbar:
+   i. Click on any header, verify that anchor tags bring user to it's respective pages. (The logo will bring to the index.html)
+   ii. Click on any animation, verify that the animations bring user to it's respective pages.
+
+2. Quiz:
+   i. Enter any quiz.
+   ii. Click play, and lottie animation should play immediately.
+   iii. Click on any answer to test answering system.
+   iv. After 10 questions, quiz will end and prompt user to input name to save. User can choose to leave or input a name to be saved. (Without inputting a name, verify that save cannot be pressed)
+   v. Leaderboard will be shown after clicking save.
+
 # Credits
+
+LottieFiles - https://lottiefiles.com/animations/maths-tNqihMWcKp (mathQuiz transition) - https://lottiefiles.com/animations/quiz-bump-ytI1sMcvsV (triviaQuiz transition) - https://lottiefiles.com/animations/question-mark-q4dfOHq7wH (allGames.html transition) - https://lottiefiles.com/animations/math-ZKNdQiqAwa (mathQuiz image in allGames.html) - https://lottiefiles.com/animations/geography-uudsHzJIEC (geographyQuiz image in allGames.html) - https://lottiefiles.com/animations/questionsanswers-kYCJ1TzB5G (triviaQuiz image in allGames.html)

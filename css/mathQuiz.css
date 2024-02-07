@@ -1,9 +1,10 @@
 body {
   background-color: #87aed5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  background: url(/img/mathPic.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #loading-page {
@@ -34,7 +35,7 @@ body {
   margin-bottom: 0.8rem;
   width: 100%;
   font-size: 3rem;
-  border: 2px solid white;
+  border: 3px solid rgb(0, 0, 0);
   min-width: 80rem;
 }
 
@@ -47,7 +48,7 @@ body {
 
 .choice-prefix {
   padding: 2rem 2.5rem;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .choice-text {
