@@ -1,5 +1,5 @@
 body {
-  background-color: #185e3f;
+  background-color: #318962;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +38,7 @@ body {
   cursor: pointer;
   box-shadow: 5px 4px 0px #ff96ad;
   transform: scale(1.02);
-  transform: transform 100ms;
+  transition: transform 100ms;
 }
 
 .choice-prefix {
@@ -84,7 +84,7 @@ body {
 #progressBar {
   width: 20rem;
   height: 3rem;
-  border: 0.2rem solid rgb(11, 223, 36);
+  border: 0.2rem solid rgb(255, 255, 255);
   margin-top: 2rem;
   border-radius: 50px;
   overflow: hidden;

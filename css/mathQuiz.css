@@ -38,7 +38,7 @@ body {
   cursor: pointer;
   box-shadow: 5px 4px 0px #ff96ad;
   transform: scale(1.02);
-  transform: transform 100ms;
+  transition: transform 100ms;
 }
 
 .choice-prefix {
