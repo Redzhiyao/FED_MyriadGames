@@ -1,10 +1,8 @@
 const usernameMath = document.querySelector("#usernameMath");
 const saveScoreBtn = document.querySelector("#saveScoreBtn");
-const finalScore = document.querySelector("#finalScore");
 const mostRecentScoreMath = document.querySelector("#mostRecentScoreMath");
 
 const highScoresMath = JSON.parse(localStorage.getItem("highScoresMath")) || [];
-const MAX_HIGH_SCORES = 5;
 
 mostRecentScoreMath.innerText =
   localStorage.getItem("mostRecentScoreMath") || 0;
