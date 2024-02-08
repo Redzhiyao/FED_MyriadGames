@@ -38,6 +38,10 @@ body {
   color: white;
 }
 
+#question {
+  font-size: 3.5rem; /* Adjust font size as needed */
+}
+
 .choice-container {
   font-family: "Poppins-Medium", Helvetica;
   display: flex;

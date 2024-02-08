@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Select the next question from the API data sequentially
     currentQuestion = questions[questionCounter - 1];
     console.log("Current question:", currentQuestion);
-
+    progressText.innerText = `Question ${questionCounter}`;
     // Access nested properties correctly
     const questionText = currentQuestion.question;
 

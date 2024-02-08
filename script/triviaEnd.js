@@ -6,6 +6,7 @@ const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const MAX_HIGH_SCORES = 5;
 
+console.log("Most recent score:", localStorage.getItem("highScore"));
 mostRecentScore.innerText = localStorage.getItem("highScore") || 0;
 
 username.addEventListener("keyup", () => {
@@ -16,14 +17,14 @@ saveHighScore = (e) => {
   e.preventDefault();
 
   const score = {
-    score: mostRecentScore.innerText,
+    score: parseInt(mostRecentScore.innerText),
     name: username.value,
   };
 
   highScores.push(score);
 
   highScores.sort((a, b) => {
-    return b.score - a.score;
+    return parseInt(b.score) - parseInt(a.score);
   });
 
   highScores.splice(MAX_HIGH_SCORES);
