@@ -1,13 +1,11 @@
 const usernameGeography = document.querySelector("#usernameGeography");
 const saveScoreBtn = document.querySelector("#saveScoreBtn");
-const finalScore = document.querySelector("#finalScore");
 const mostRecentScoreGeography = document.querySelector(
   "#mostRecentScoreGeography"
 );
 
 const highScoresGeography =
   JSON.parse(localStorage.getItem("highScoresGeography")) || [];
-const MAX_HIGH_SCORES = 5;
 
 mostRecentScoreGeography.innerText =
   localStorage.getItem("mostRecentScoreGeography") || 0;
