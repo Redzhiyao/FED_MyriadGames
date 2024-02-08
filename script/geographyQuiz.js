@@ -79,12 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const updateHighScore = (score) => {
-    const currentHighScore = localStorage.getItem("highScore") || 0;
-
-    if (score > currentHighScore) {
-      localStorage.setItem("highScore", score);
-    }
+  const updateMostRecentScore = (score) => {
+    localStorage.setItem("mostRecentScoreGeography", score);
   };
 
   const getNewQuestion = () => {
@@ -93,18 +89,17 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("questionCounter:", questionCounter);
 
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-      localStorage.setItem("mostRecentScore", score);
+      localStorage.setItem("mostRecentScoreGeography", score);
 
       console.log("No more questions or max questions reached");
       // Call this function whenever the game ends with the player's final score
-      updateHighScore(score);
+      updateMostRecentScore(score);
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {
         return window.location.assign("geographyEnd.html");
       }
     }
-
     questionCounter++;
     console.log(`Question ${questionCounter} of ${MAX_QUESTIONS}`);
     progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
