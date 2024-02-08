@@ -31,6 +31,7 @@ body {
   font-size: 3rem;
   border: 2px solid white;
   min-width: 80rem;
+  background-color: #b35cea;
 }
 
 .choice-container:hover {

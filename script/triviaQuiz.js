@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign("/html/triviaEnd.html");
+        return window.location.assign("triviaEnd.html");
       }
     }
 

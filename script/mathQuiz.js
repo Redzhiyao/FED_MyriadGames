@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign("/html/mathEnd.html");
+        return window.location.assign("mathEnd.html");
       }
     }
 

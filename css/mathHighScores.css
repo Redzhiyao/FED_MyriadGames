@@ -9,7 +9,7 @@ body {
 
 #highScoresList {
   list-style: none;
-  margin-bottom: 4rem;
+  margin-bottom: rem;
 }
 
 #finalScore {
