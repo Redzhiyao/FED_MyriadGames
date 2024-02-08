@@ -3,20 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS for styling -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+
+    <!-- Lottie Animation Player module -->
     <script
       src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
       type="module"
     ></script>
+
+    <!-- Custom CSS file for additional styling -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <title>All Games</title>
   </head>
 
+  <!-- Navigation bar with logo and links to different game pages -->
   <body>
     <div id="loading-page">
       <dotlottie-player
@@ -56,9 +62,11 @@
       </div>
     </nav>
 
+    <!-- Display section for all games with links to play each game -->
     <div class="allGames-display">
       <div class="container">
         <div class="row justify-content-around">
+          <!-- Geography Quiz Box -->
           <div class="col-md-4 text-center mb-4">
             <div class="box d-flex flex-column align-items-center">
               <a href="playGeographyQuiz.html">
@@ -74,6 +82,7 @@
               </a>
             </div>
           </div>
+          <!-- Math Quiz Box -->
           <div class="col-md-4 text-center mb-4">
             <div class="box d-flex flex-column align-items-center">
               <a href="playMathQuiz.html">
@@ -89,6 +98,7 @@
               </a>
             </div>
           </div>
+          <!-- Trivia Quiz Box -->
           <div class="col-md-4 text-center mb-4">
             <div class="box d-flex flex-column align-items-center">
               <a href="playTriviaQuiz.html">
@@ -108,6 +118,7 @@
       </div>
     </div>
 
+    <!-- Bootstrap JS for enhanced functionality -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
