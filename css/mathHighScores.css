@@ -13,11 +13,11 @@ body {
 
 #highScoresListMath {
   list-style: none;
-  margin-bottom: 4rem;  
+  margin-bottom: 4rem;
   padding: 0;
 }
 
-.high-score-math {
+.high-score-Math {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
