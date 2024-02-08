@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const fetchTriviaData = async () => {
     try {
       const response = await fetch(
-        "https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=50&category=22&difficulty=easy&type=multiple"
       );
 
       if (!response.ok) {

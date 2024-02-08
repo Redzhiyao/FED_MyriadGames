@@ -17,7 +17,11 @@ The key objectives of our team, Myriad Games, are centered around creating a web
 
 # Technology Used
 
-API name to be added
+- Geography Trivia API (OpenTriviaDB [https://opentdb.com/api.php?amount=50&category=22&difficulty=easy&type=multiple])
+- Math Trivia API (OpenTriviaDB [https://opentdb.com/api.php?amount=10&category=19&difficulty=medium&type=multiple])
+- General Trivia API (The-Trivia-API [https://the-trivia-api.com/v2/questions/])
+- Lotties [https://lottiefiles.com/]
+- BootStrap [https://getbootstrap.com/]
 
 # Testing
 
