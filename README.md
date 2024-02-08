@@ -42,3 +42,7 @@ LottieFiles - https://lottiefiles.com/animations/maths-tNqihMWcKp (mathQuiz tran
 
 - Desktop Wireframe https://www.figma.com/file/9ieQ2UhqyAOm7fb8rE6mZ0/Desktop-Wireframe?type=design&mode=design&t=XEIm9hWtkOVvo2Ct-1
 - Mobile Wireframe https://www.figma.com/file/Eyj2NrVgInwLsPzm1ykKbA/Mobile-Wireframe?type=design&node-id=0%3A1&mode=design&t=XEIm9hWtkOVvo2Ct-1
+
+# Github
+
+https://redzhiyao.github.io/FED_MyriadGames/
