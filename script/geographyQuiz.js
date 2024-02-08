@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const fetchTriviaData = async () => {
     try {
       const response = await fetch(
-        "https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=50&category=22&difficulty=easy&type=multiple"
       );
 
       if (!response.ok) {
@@ -79,12 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const updateHighScore = (score) => {
-    const currentHighScore = localStorage.getItem("highScore") || 0;
-
-    if (score > currentHighScore) {
-      localStorage.setItem("highScore", score);
-    }
+  const updateMostRecentScore = (score) => {
+    localStorage.setItem("mostRecentScoreGeography", score);
   };
 
   const getNewQuestion = () => {
@@ -93,11 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("questionCounter:", questionCounter);
 
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-      localStorage.setItem("mostRecentScore", score);
+      localStorage.setItem("mostRecentScoreGeography", score);
 
       console.log("No more questions or max questions reached");
       // Call this function whenever the game ends with the player's final score
-      updateHighScore(score);
+      updateMostRecentScore(score);
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {

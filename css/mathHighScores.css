@@ -7,9 +7,19 @@ body {
   color: rgb(0, 0, 0);
 }
 
-#highScoresList {
+#highScoresMath {
+  text-align: center;
+}
+
+#highScoresListMath {
   list-style: none;
-  margin-bottom: rem;
+  margin-bottom: 4rem;  
+  padding: 0;
+}
+
+.high-score-math {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 #finalScore {

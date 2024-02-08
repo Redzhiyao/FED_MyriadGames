@@ -1,34 +1,47 @@
-const username = document.querySelector("#username");
+const usernameGeography = document.querySelector("#usernameGeography");
 const saveScoreBtn = document.querySelector("#saveScoreBtn");
 const finalScore = document.querySelector("#finalScore");
-const mostRecentScore = document.querySelector("#mostRecentScore");
+const mostRecentScoreGeography = document.querySelector(
+  "#mostRecentScoreGeography"
+);
 
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-
+const highScoresGeography =
+  JSON.parse(localStorage.getItem("highScoresGeography")) || [];
 const MAX_HIGH_SCORES = 5;
 
-mostRecentScore.innerText = localStorage.getItem("mostRecentScore") || 0;
+mostRecentScoreGeography.innerText =
+  localStorage.getItem("mostRecentScoreGeography") || 0;
 
-username.addEventListener("keyup", () => {
-  saveScoreBtn.disabled = !username.value;
+usernameGeography.addEventListener("keyup", () => {
+  saveScoreBtn.disabled = !usernameGeography.value;
 });
 
-saveHighScore = (e) => {
+saveHighScoreGeography = (e) => {
   e.preventDefault();
 
+  const usernameValue = usernameGeography.value;
   const score = {
-    score: mostRecentScore.innerText,
-    name: username.value,
+    score: mostRecentScoreGeography.innerText,
+    name: usernameValue,
   };
 
-  highScores.push(score);
+  highScoresGeography.push(score);
 
-  highScores.sort((a, b) => {
+  highScoresGeography.sort((a, b) => {
     return b.score - a.score;
   });
 
-  highScores.splice(5);
+  highScoresGeography.splice(5);
 
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-  window.location.assign("/html/geographyHighScores.html");
+  localStorage.setItem(
+    "highScoresGeography",
+    JSON.stringify(highScoresGeography)
+  );
+  localStorage.setItem(
+    "mostRecentScoreGeography",
+    mostRecentScoreGeography.innerText
+  );
+  localStorage.setItem("usernameGeography", usernameValue); // Store the usernameGeography
+
+  window.location.assign("geographyHighScores.html");
 };
