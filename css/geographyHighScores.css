@@ -1,14 +1,22 @@
 body {
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#highScoresList {
+#highScoresGeography {
+  text-align: center;
+}
+
+#highScoresListGeography {
   list-style: none;
   margin-bottom: 4rem;
+  padding: 0;
 }
 
-.high-score {
-  font-size: 2.8rem;
+.high-score-geography {
+  font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -24,8 +32,4 @@ body {
 
 .back-button:hover {
   background-color: #555;
-}
-
-#end-text {
-  color: white;
 }

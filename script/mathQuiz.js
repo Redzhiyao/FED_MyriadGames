@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hide the loading page
     document.getElementById("loading-page").style.display = "none";
   }
-
   const question = document.getElementById("question");
   const choices = Array.from(
     document.querySelectorAll(".choice-container .choice-text")
@@ -80,12 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const updateHighScore = (score) => {
-    const currentHighScore = localStorage.getItem("highScore") || 0;
-
-    if (score > currentHighScore) {
-      localStorage.setItem("highScore", score);
-    }
+  const updateMostRecentScore = (score) => {
+    localStorage.setItem("mostRecentScoreMath", score);
   };
 
   const getNewQuestion = () => {
@@ -94,15 +89,15 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("questionCounter:", questionCounter);
 
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-      localStorage.setItem("mostRecentScore", score);
+      localStorage.setItem("mostRecentScoreMath", score);
 
       console.log("No more questions or max questions reached");
       // Call this function whenever the game ends with the player's final score
-      updateHighScore(score);
+      updateMostRecentScore(score);
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign("/html/mathEnd.html");
+        return window.location.assign("mathEnd.html");
       }
     }
 
