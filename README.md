@@ -39,3 +39,6 @@ The key objectives of our team, Myriad Games, are centered around creating a web
 # Credits
 
 LottieFiles - https://lottiefiles.com/animations/maths-tNqihMWcKp (mathQuiz transition) - https://lottiefiles.com/animations/quiz-bump-ytI1sMcvsV (triviaQuiz transition) - https://lottiefiles.com/animations/question-mark-q4dfOHq7wH (allGames.html transition) - https://lottiefiles.com/animations/math-ZKNdQiqAwa (mathQuiz image in allGames.html) - https://lottiefiles.com/animations/geography-uudsHzJIEC (geographyQuiz image in allGames.html) - https://lottiefiles.com/animations/questionsanswers-kYCJ1TzB5G (triviaQuiz image in allGames.html)
+
+- Desktop Wireframe https://www.figma.com/file/9ieQ2UhqyAOm7fb8rE6mZ0/Desktop-Wireframe?type=design&mode=design&t=XEIm9hWtkOVvo2Ct-1
+- Mobile Wireframe https://www.figma.com/file/Eyj2NrVgInwLsPzm1ykKbA/Mobile-Wireframe?type=design&node-id=0%3A1&mode=design&t=XEIm9hWtkOVvo2Ct-1
