@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const updateMostRecentScore = (score) => {
-    localStorage.setItem("mostRecentScore", score);
+    localStorage.setItem("mostRecentScoreTrivia", score);
   };
 
   const getNewQuestion = () => {
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("questionCounter:", questionCounter);
 
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-      localStorage.setItem("mostRecentScore", score);
+      localStorage.setItem("mostRecentScoreTrivia", score);
 
       console.log("No more questions or max questions reached");
       // Call this function whenever the game ends with the player's final score
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirect to triviaEnd.html after 10 questions
       if (questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign("/html/triviaEnd.html");
+        return window.location.assign("triviaEnd.html");
       }
     }
 

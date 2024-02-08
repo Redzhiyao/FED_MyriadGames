@@ -1,37 +1,44 @@
-const username = document.querySelector("#username");
-const saveScoreBtn = document.querySelector("#saveScoreBtn");
+const usernameTrivia = document.getElementById("usernameTrivia");
+const saveScoreBtnTrivia = document.querySelector("#saveScoreBtnTrivia");
 
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+const highScoresTrivia =
+  JSON.parse(localStorage.getItem("highScoresTrivia")) || [];
 
-const MAX_HIGH_SCORES = 5;
+const MAX_HIGH_SCORES_TRIVIA = 5;
 
-let mostRecentScore = parseInt(localStorage.getItem("mostRecentScore")) || 0;
+let mostRecentScoreTrivia =
+  parseInt(localStorage.getItem("mostRecentScoreTrivia")) || 0;
 
-console.log("Most recent score:", mostRecentScore);
+console.log("Most recent score (Trivia):", mostRecentScoreTrivia);
 
-// Display the most recent score
-document.getElementById("mostRecentScore").innerText = mostRecentScore;
+// Display the most recent score (Trivia)
+document.getElementById("mostRecentScoreTrivia").innerText =
+  mostRecentScoreTrivia;
 
-username.addEventListener("keyup", () => {
-  saveScoreBtn.disabled = !username.value;
+usernameTrivia.addEventListener("keyup", () => {
+  saveScoreBtnTrivia.disabled = !usernameTrivia.value;
 });
 
-saveHighScore = (e) => {
+saveHighScoreTrivia = (e) => {
   e.preventDefault();
 
+  const usernameValue = usernameTrivia.value; // Get the value of the username input field
   const score = {
-    score: mostRecentScore, // Use mostRecentScore instead of parseInt(mostRecentScore.innerText)
-    name: username.value,
+    score: mostRecentScoreTrivia,
+    name: usernameValue.value, // Use the username value instead of the username element itself
   };
 
-  highScores.push(score);
+  highScoresTrivia.push(score);
 
-  highScores.sort((a, b) => {
+  highScoresTrivia.sort((a, b) => {
     return parseInt(b.score) - parseInt(a.score);
   });
 
-  highScores.splice(MAX_HIGH_SCORES);
+  highScoresTrivia.splice(MAX_HIGH_SCORES_TRIVIA);
 
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-  window.location.assign("/html/triviaHighScores.html");
+  localStorage.setItem("highScoresTrivia", JSON.stringify(highScoresTrivia));
+  localStorage.setItem("mostRecentScoreTrivia", mostRecentScoreTrivia); // Store the most recent score
+  localStorage.setItem("usernameTrivia", usernameValue); // Store the username#
+  console.log("We going somewhere but nowhere");
+  window.location.assign("triviaHighScores.html");
 };
