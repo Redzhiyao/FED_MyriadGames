@@ -1,8 +1,9 @@
 body {
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Poppins-bold", Helvetica;
 }
 
 #highScoresGeography {
